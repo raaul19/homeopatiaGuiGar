@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return view('products.productIndex', compact('products'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.productForm');
     }
 
     /**
@@ -35,7 +37,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->name);
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => ['required','numeric'],
+            'photo' => 'required|url',
+        ]);
+
+        $product = new Product();
+
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->photo = $request->photo;
+
+        $product->save();
+
+        return redirect('/products');
     }
 
     /**
