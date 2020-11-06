@@ -9,17 +9,18 @@
 <body>
     <a href="{{ route('products.create') }}">Nuevo Producto</a>
     <hr>
-    <table class="table">
+
+    <table border="1">
         <tr>
             <th>Nombre</th>
-            <th>Descripcion</th>
             <th>Precio</th>
             <th>Foto</th>
         </tr>
         @foreach ($products as $product)
             <tr>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->description }}</td>
+                <td>
+                    <a href="{{ route('products.show', [$product])}}"> {{ $product->name}} </a>
+                </td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->photo }}</td>
             </tr>

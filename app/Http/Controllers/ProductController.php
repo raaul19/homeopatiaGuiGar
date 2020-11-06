@@ -54,7 +54,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect('/products');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -66,6 +66,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
+        return view('products.productShow',compact('product'));
     }
 
     /**

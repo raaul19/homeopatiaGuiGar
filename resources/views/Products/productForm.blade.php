@@ -7,6 +7,7 @@
     <title>Captura de Producto</title>
 </head>
 <body>
+    <a href=" {{ route ('products.index')}}">Volver</a>
     <h1>Crear Producto Nuevo</h1>
     <form action="{{ route('products.store') }}" method="POST">
         @csrf
