@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->name);
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -45,14 +45,7 @@ class ProductController extends Controller
             'photo' => 'required|url',
         ]);
 
-        $product = new Product();
-
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->photo = $request->photo;
-
-        $product->save();
+        Product::create($request->all());
 
         return redirect()->route('products.index');
     }
@@ -77,7 +70,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.productForm', compact('product'));
     }
 
     /**
@@ -89,7 +82,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => ['required','numeric'],
+            'photo' => 'required|url',
+        ]);
+
+        Product::where('id',$product->id)
+            ->update($request->except('_method','_token'));
+
+        return redirect()->route('products.show',[$product]);
     }
 
     /**

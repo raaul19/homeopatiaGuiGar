@@ -9,7 +9,24 @@
 <body>
     <a href=" {{ route ('products.index')}}">Volver</a>
     <h1>Crear Producto Nuevo</h1>
-    <form action="{{ route('products.store') }}" method="POST">
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li> {{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if(@isset($product))
+        <form action="{{ route('products.update',[$product])}}" method="POST">
+        @method('patch')
+    @else
+        <form action=" {{ route('products.store')}}" method="POST">
+    @endif
+
         @csrf
         <label for="name">Nombre:</label>
         <input type="text" name="name" value="{{ old('name') ?? $product->name ?? ''}}">
