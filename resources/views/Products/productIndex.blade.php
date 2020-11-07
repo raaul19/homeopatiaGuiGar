@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{ route('products.create') }}" class="">Nuevo Producto</a>
+    <a href="{{ route('products.create') }}" class="text-size-20 margin-bottom-20 text-dark text-center"><b>Añadir nuevo producto</a>
     <hr>
 
-    <table border="1">
+    <table border="1" class="text-center">
         <tr>
             <th>Nombre</th>
             <th>Precio</th>

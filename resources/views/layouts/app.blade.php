@@ -52,11 +52,10 @@
                 <p class="margin-bottom-0 text-size-16 text-dark">Cuide su cuerpo. Es el único sitio que usted tiene para vivir.</p>
               </div>
             </header>
-            <section class="section background-white">
-
+            <article class="section background-white">
             <!-- Content -->
                  @yield('content')
-            </section>
+            </article>
           </article>
         </main>
 
