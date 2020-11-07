@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver producto</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
     <a href="{{ route('products.index')}}">Listado de Productos</a>
     <a href="{{ route('products.edit', [$product->id])}}">Editar producto</a>
 
@@ -27,5 +22,4 @@
         <button type="submit"> Eliminar </button>
 
     </form>
-</body>
-</html>
+@endsection
