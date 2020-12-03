@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.homeo')
 
-@section('content')
+    @section('content')
     <a href="{{ route('products.create') }}" class="text-size-20 margin-bottom-20 text-dark text-center"><b>Añadir nuevo producto</a>
     <hr>
 
@@ -21,3 +21,4 @@
         @endforeach
     </table>
 @endsection
+

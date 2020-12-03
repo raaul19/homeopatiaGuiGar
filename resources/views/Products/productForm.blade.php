@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.homeo')
 
 @section('content')
     <a href=" {{ route ('products.index')}}" class="text-size-20 margin-bottom-20 text-dark text-center"><b>Volver</a>
