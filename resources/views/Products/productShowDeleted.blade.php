@@ -1,10 +1,11 @@
 @extends('layouts.homeo')
 
     @section('content')
-    <a href="{{ route('products.create') }}" class="text-size-20 margin-bottom-20 text-dark text-center"><b>Añadir nuevo producto</a>
+    <a href=" {{ route ('products.index')}}" class="text-size-20 margin-bottom-20 text-dark text-center"><b>Volver</a>
     <hr>
 
     <table border="1" class="text-center">
+        <thead class="text-center"> Productos agotados</thead>
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
@@ -12,17 +13,13 @@
         </tr>
         @foreach ($products as $product)
             <tr>
-                <td>
-                    <a href="{{ route('products.show', [$product])}}"> {{ $product->name}} </a>
-                </td>
+                <td>{{ $product->name }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->photo }}</td>
             </tr>
         @endforeach
     </table>
     <hr>
-
-    <a href="{{ route('showDeleted') }}" class="text-size-20 margin-bottom-20 text-dark text-center"><b>Listar productos eliminados</a>
 
 @endsection
 

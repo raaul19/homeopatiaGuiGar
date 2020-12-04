@@ -22,8 +22,9 @@ Route::get('/index', function () {
     return view('index');
 });
 
+Route::get('products/showDeleted',[ProductController::class , 'showDeleted'])->name('showDeleted');
 
-Route::resource('products',ProductController::class);
+Route::resource('products', ProductController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

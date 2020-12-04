@@ -62,6 +62,13 @@ class ProductController extends Controller
         return view('products.productShow',compact('product'));
     }
 
+    public function showDeleted()
+    {
+        $products = Product::onlyTrashed()->get();
+
+        return view('products.productShowDeleted',compact('products'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
