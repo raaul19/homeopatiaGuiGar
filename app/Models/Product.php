@@ -18,15 +18,12 @@ class Product extends Model
         return ucfirst(strtolower($value));
     }
 
-    /* propiedad virtual  tema_con_enlace
-    public function getTemaConEnlace(){
-        return $this->tema . "" . $this->enlace;
-    }
-    */
 
     public function setNameAttribute($value){
         $this->attributes['name'] = mb_strtoupper($value, "UTF-8");
     }
 
-
+    public function product_type(){
+        return $this->belongsTo(ProductTypes::class);
+    }
 }
