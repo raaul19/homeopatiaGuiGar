@@ -11,6 +11,6 @@ class ProductTypes extends Model
     public $timestamps = false;
 
     public function products(){
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }
