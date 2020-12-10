@@ -29,6 +29,13 @@
                 <input type="text" name="name" value="{{ old('name') ?? $product->name ?? ''}}">
                 <br>
 
+                <label for="category"> Categoria:</label>
+                <select name="category">
+                    @foreach ($categories as $category)
+                        <option value="{{$category->category}}">{{$category->category}}</option>
+                    @endforeach
+                </select>
+
                 <label for="description">Descripcion:</label>
                 <textarea name="description"> {{ old('description') ?? $product->description ?? ''}} </textarea>
                 <br>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -26,7 +27,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.productForm');
+
+        $categories = Category::pluck('category','id')->toArray();
+        return view('products.productForm', compact('categories'));
+
     }
 
     /**
@@ -45,7 +49,10 @@ class ProductController extends Controller
             'photo' => 'required|url',
         ]);
 
-        Product::create($request->all());
+
+        $product = Product::create($request->all());
+
+        $product->categories()->attach($request->category_id);
 
         return redirect()->route('products.index');
     }
@@ -77,7 +84,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.productForm', compact('product'));
+        $categories = Category::pluck('category', 'id')->toArray();
+        return view('products.productForm', compact('product, categories'));
     }
 
     /**
@@ -97,7 +105,10 @@ class ProductController extends Controller
         ]);
 
         Product::where('id',$product->id)
-            ->update($request->except('_method','_token'));
+            ->update($request->except('_method','_token', 'category_id'));
+
+
+        $product->categories()->sync($request->category_id);
 
         return redirect()->route('products.show',[$product]);
     }

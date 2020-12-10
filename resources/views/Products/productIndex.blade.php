@@ -7,6 +7,7 @@
     <table border="1" class="text-center">
         <tr>
             <th>Nombre</th>
+            <th>Categoria</th>
             <th>Precio</th>
             <th>Foto</th>
         </tr>
@@ -14,6 +15,11 @@
             <tr>
                 <td>
                     <a href="{{ route('products.show', [$product])}}"> {{ $product->name}} </a>
+                </td>
+                <td>
+                    @foreach ($product->category as $category)
+                        {{$category->category}} <br>
+                    @endforeach
                 </td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->photo }}</td>
