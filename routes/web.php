@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProductTypesController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('category', CategoryController::class);
+
+Route::resource('order', OrderController::class);
