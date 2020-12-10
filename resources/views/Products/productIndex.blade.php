@@ -16,11 +16,7 @@
                 <td>
                     <a href="{{ route('products.show', [$product])}}"> {{ $product->name}} </a>
                 </td>
-                <td>
-                    @foreach ($product->category as $category)
-                        {{$category->category}} <br>
-                    @endforeach
-                </td>
+                <td> {{ $product->category->category }} </td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->photo }}</td>
             </tr>

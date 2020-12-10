@@ -17,6 +17,11 @@
                 <td>{{ $order->id }}</td>
                 <td>{{ $order->user_id }}</td>
                 <td>{{ $order->time }}</td>
+                @foreach($order as $od)
+                    <tbody>
+                        <td>{{ $od->category}}</td>
+                    </tbody>
+                @endforeach
             </tr>
         @endforeach
     </table>
