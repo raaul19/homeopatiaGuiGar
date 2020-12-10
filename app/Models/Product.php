@@ -23,7 +23,7 @@ class Product extends Model
         $this->attributes['name'] = mb_strtoupper($value, "UTF-8");
     }
 
-    public function product_type(){
+    public function category(){
         return $this->hasMany(ProductTypes::class);
     }
 }
