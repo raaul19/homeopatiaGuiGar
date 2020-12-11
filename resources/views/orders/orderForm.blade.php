@@ -2,15 +2,7 @@
 
 @section('content')
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li> {{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('partials.form-error')
 
     <section class="section background-white">
         <div class="s-12 m-12 l-4 center">
