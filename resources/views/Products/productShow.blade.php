@@ -16,6 +16,7 @@
     <h1>Producto # {{ $product->id }}</h1>
     <ul>
         <li>Nombre: {{ $product->name }}</li>
+        <li>Categoria: {{ $product->category->category}}</li>
         <li>Descripcion: {{ $product->description }}</li>
         <li>Price: {{ $product->price }}</li>
         <li>Foto: {{ $product->photo }}</li>
