@@ -26,12 +26,16 @@ Route::get('/index', function () {
 
 Route::get('products/showDeleted',[ProductController::class , 'showDeleted'])->name('showDeleted');
 
-Route::resource('products', ProductController::class);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('category', CategoryController::class);
+Route::middleware('auth')->group(function(){
+    Route::resource('products', ProductController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('order', OrderController::class);
+});
 
-Route::resource('order', OrderController::class);
+
