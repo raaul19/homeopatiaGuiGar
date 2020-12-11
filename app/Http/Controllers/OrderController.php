@@ -29,7 +29,6 @@ class OrderController extends Controller
     public function create()
     {
         $users = User::all();
-        //$products = Product::pluck('name','id')->toArray();
 
         $products = Product::all();
         return view('orders.orderForm',compact('users','products'));

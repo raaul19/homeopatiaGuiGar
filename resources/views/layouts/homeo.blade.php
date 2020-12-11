@@ -32,9 +32,36 @@
             <div class="top-nav right">
               <p class="nav-text"></p>
               <ul class="right chevron">
-                <li><a href="">Inicio</a></li>
-                <li><a href="">Acerca de</a></li>
-                <li><a href="">Contacto</a></li>
+                @if (Route::has('login'))
+
+                    @auth
+                    <li>
+                        <a href="{{ url('/products') }}" class="text-sm text-gray-700 underline">Productos</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/order') }}" class="text-sm text-gray-700 underline">Órdenes</a>
+                    </li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" class="">
+                            @csrf
+                             <a href="" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                         </form>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+                    </li>
+
+
+                        @if (Route::has('register'))
+                            <li>
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrarse</a>
+                            </li>
+
+                        @endif
+                    @endif
+
+            @endif
               </ul>
             </div>
           </div>
