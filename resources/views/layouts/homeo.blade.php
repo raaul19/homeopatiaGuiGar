@@ -41,6 +41,11 @@
                     <li>
                         <a href="{{ url('/order') }}" class="text-sm text-gray-700 underline">Órdenes</a>
                     </li>
+                    @can('admin')
+                    <li>
+                        <a href="{{ url('/category') }}" class="text-sm text-gray-700 underline">Categorias</a>
+                    </li>
+                    @endcan
                     <li>
                         <form action="{{ route('logout') }}" method="POST" class="">
                             @csrf
