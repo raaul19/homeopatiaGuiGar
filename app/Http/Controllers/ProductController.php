@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -27,9 +28,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-
-        $categories = Category::all();
-        return view('products.productForm', compact('categories'));
+        if(Gate::allows('admin')){
+            $categories = Category::all();
+            return view('products.productForm', compact('categories'));
+        }
+        else{
+            return redirect('/');
+        }
 
     }
 
@@ -92,8 +97,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
-        return view('products.productForm', compact('product','categories'));
+        if(Gate::allows('admin')){
+            $categories = Category::all();
+            return view('products.productForm', compact('categories'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -127,7 +137,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
-        return redirect()->route('products.index');
+        if(Gate::allows('admin')){
+            $product->delete();
+            return redirect()->route('products.index');
+        }
+        else{
+            return redirect('/');
+        }
+
     }
 }
