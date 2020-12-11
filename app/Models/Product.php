@@ -12,7 +12,7 @@ class Product extends Model
     use SoftDeletes;
 
     protected $table = "products";
-    protected $fillable = ['name','description','price','photo'];
+    protected $fillable = ['name','description','price','photo','type'];
 
     public function getDescriptionAttribute($value){
         return ucfirst(strtolower($value));
