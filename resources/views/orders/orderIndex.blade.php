@@ -2,7 +2,7 @@
 
     @section('content')
     <hr>
-
+    <a href="{{ route('order.create') }}" class="text-size-20 margin-bottom-20 text-dark text-center"><b>Añadir nueva orden</a>
     <table border="1" class="text-center">
         <h1> Listado de Órdenes </h1>
 
@@ -14,7 +14,9 @@
 
         @foreach ($orders as $order)
             <tr>
-                <td>{{ $order->id }}</td>
+                <td>
+                    <a href="{{ route('order.show', [$order])}}"> {{ $order->id}} </a>
+                </td>
                 <td>{{ $order->user->name }}</td>
                 <td>
                     @foreach ($order->products as $product)
