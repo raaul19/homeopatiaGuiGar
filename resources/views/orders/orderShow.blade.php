@@ -5,11 +5,6 @@
         <li>
             <a href="{{ route('order.index')}}" class="text-size-20 margin-bottom-20 text-dark text-center"> Listado de órdenes</a>
         </li>
-        @can('admin')
-        <li>
-            <a href="{{ route('order.edit', [$order->id])}}" class="text-size-20 margin-bottom-20 text-dark text-center">Editar órdenes</a>
-        </li>
-        @endcan
     </ul>
 
 
