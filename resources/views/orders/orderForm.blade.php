@@ -23,10 +23,17 @@
                     <form action=" {{ route('order.store')}}" method="POST" class="customform">
                 @endif
                     @csrf
+                    <label for="user_id">Usuarios:</label>
+                    <select name="user_id">
+                        @foreach ($users as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+                        @endforeach
+                    </select>
+
                     <label for="product_id">Productos:</label>
                     <select name="product_id">
                         @foreach ($products as $product)
-                            <option value="{{$product->name}}">{{$product->name}}</option>
+                            <option value="{{ $product->id }}"> {{ $product->name}} </option>
                         @endforeach
                     </select>
 

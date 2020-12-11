@@ -9,19 +9,19 @@
         <tr>
             <th>ID orden</th>
             <th>Usuario</th>
-            <th>Tiempo</th>
+            <th>Productos</th>
         </tr>
 
         @foreach ($orders as $order)
             <tr>
                 <td>{{ $order->id }}</td>
-                <td>{{ $order->user_id }}</td>
-                <td>{{ $order->time }}</td>
-                @foreach($order as $od)
-                    <tbody>
-                        <td>{{ $od->category}}</td>
-                    </tbody>
-                @endforeach
+                <td>{{ $order->user->name }}</td>
+                <td>
+                    @foreach ($order->products as $product)
+                        {{ $product->name }}
+                    @endforeach
+                </td>
+
             </tr>
         @endforeach
     </table>
