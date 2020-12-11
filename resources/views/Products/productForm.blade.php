@@ -29,10 +29,10 @@
                 <input type="text" name="name" value="{{ old('name') ?? $product->name ?? ''}}">
                 <br>
 
-                <label for="categories"> Categoria:</label>
-                <select name="categories">
+                <label for="category_id"> Categoria:</label>
+                <select name="category_id">
                     @foreach ($categories as $category)
-                        <option value="{{$category->category}}">{{$category->category}}</option>
+                        <option value="{{$category->id}}">{{$category->category}}</option>
                     @endforeach
                 </select>
 

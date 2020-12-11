@@ -44,16 +44,23 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => 'required',
+            'category_id' => 'required',
             'description' => 'required',
             'price' => ['required','numeric'],
             'photo' => 'required|url',
         ]);
 
+        $product = new Product();
+        $product->category_id = $request->category_id;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->photo = $request->photo;
+        $product->save();
+        /*$product = Product::create($request->all());
 
-        $product = Product::create($request->all());
-            dd($product->categories());
         $product->categories()->attach($request->category_id);
-
+        */
         //$category = Category::create($request->all());
 
         return redirect()->route('products.index');
@@ -67,7 +74,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
         return view('products.productShow',compact('product'));
     }
 
@@ -86,8 +92,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::pluck('category', 'id')->toArray();
-        return view('products.productForm', compact('product, categories'));
+        $categories = Category::all();
+        return view('products.productForm', compact('product','categories'));
     }
 
     /**
@@ -101,16 +107,14 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'category_id' => 'required',
             'description' => 'required',
             'price' => ['required','numeric'],
             'photo' => 'required|url',
         ]);
 
         Product::where('id',$product->id)
-            ->update($request->except('_method','_token', 'category_id'));
-
-
-        $product->categories()->sync($request->category_id);
+            ->update($request->except('_method','_token'));
 
         return redirect()->route('products.show',[$product]);
     }
