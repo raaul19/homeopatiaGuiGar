@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function create()
     {
 
-        $categories = Category::pluck('category','id')->toArray();
+        $categories = Category::all();
         return view('products.productForm', compact('categories'));
 
     }
@@ -51,8 +51,10 @@ class ProductController extends Controller
 
 
         $product = Product::create($request->all());
-
+            dd($product->categories());
         $product->categories()->attach($request->category_id);
+
+        //$category = Category::create($request->all());
 
         return redirect()->route('products.index');
     }

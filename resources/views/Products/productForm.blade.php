@@ -29,8 +29,8 @@
                 <input type="text" name="name" value="{{ old('name') ?? $product->name ?? ''}}">
                 <br>
 
-                <label for="category"> Categoria:</label>
-                <select name="category">
+                <label for="categories"> Categoria:</label>
+                <select name="categories">
                     @foreach ($categories as $category)
                         <option value="{{$category->category}}">{{$category->category}}</option>
                     @endforeach
